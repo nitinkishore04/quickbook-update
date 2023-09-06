@@ -43,6 +43,12 @@ function Update() {
         }
     };
 
+    const handleSubmit = async () => {
+        const updateUrl = endPoint + `/update/${profileId}?productName=TSheet`;
+        const response = await axios.put(updateUrl, updateProfile)
+        console.log(response);
+    }
+
     if (loading) {
         return <div> loading... </div>
     }
@@ -325,7 +331,7 @@ function Update() {
                     variant="contained"
                     color="primary"
                     width="100%"
-                    onClick={() => console.log(updateProfile)}
+                    onClick={handleSubmit}
                 >
                     Update
                 </Button>
