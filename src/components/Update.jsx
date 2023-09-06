@@ -3,9 +3,11 @@ import axios from 'axios';
 import Box from "@mui/material/Box";
 import { Container, TextField, Button } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom"
 
 function Update() {
 
+    const navigate = useNavigate();
     const { profileId } = useParams();
     const endPoint = process.env.REACT_APP_API_URL + "/profile";
     const [updateProfile, setUpdateProfiles] = useState({});
@@ -45,8 +47,8 @@ function Update() {
 
     const handleSubmit = async () => {
         const updateUrl = endPoint + `/update/${profileId}?productName=TSheet`;
-        const response = await axios.put(updateUrl, updateProfile)
-        console.log(response);
+        await axios.put(updateUrl, updateProfile)
+        navigate("/")
     }
 
     if (loading) {
