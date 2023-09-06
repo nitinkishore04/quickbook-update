@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from "react-router-dom"
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Button } from "@mui/material";
 
 function Home() {
 
+    const navigate = useNavigate();
     const endPoint = process.env.REACT_APP_API_URL + "/profile";
     const [profiles, setProfiles] = useState({});
     const [loading, setLoading] = useState(true);
@@ -66,7 +68,7 @@ function Home() {
                                     <Button
                                         variant="outlined"
                                         color="secondary"
-                                        onClick={() => console.log("I am here")}
+                                        onClick={() => navigate(`/update/${profile.id}`) }
                                     >
                                         Update
                                     </Button>
